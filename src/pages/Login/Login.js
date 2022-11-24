@@ -6,13 +6,11 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
-
- 
-  return (
+return (
     <div className="hero">
       <div className="hero-content ">
       
-        <div className="card shadow-2xl py-20 bg-base-100">
+        <div className="card flex-shrink-0 w-full shadow-2xl py-10 bg-base-100">
           <h1 className="text-4xl text-center font-bold">Login</h1>
           <form  className="card-body">
             <div className="form-control">
