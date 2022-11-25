@@ -1,18 +1,44 @@
 
-import React from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 
 const Login = () => {
 
-  const { register, handleSubmit,formState: { errors } } = useForm();
+  const googleProvider = new GoogleAuthProvider();
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { logIn, googleSignIn } = useContext(AuthContext);
+
+  const [logInError, setLogInError] = useState('')
 
 
   const handleLogin = (data) => {
     console.log(data);
+    setLogInError('');
+    logIn(data.email, data.password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      }).catch(error => {
+        console.log(error.message);
+        setLogInError(error.message)
+      });
   }
+
+
+  const signInWithGoogle = () => {
+    googleSignIn(googleProvider)
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    }).catch(error => console.log(error));
+  }
+
 
 return (
     <div className="hero">
@@ -57,12 +83,17 @@ return (
             </div>
             <div className="form-control mt-6">
               <input
-             
+                 onClick={signInWithGoogle}
                 className="btn btn-secondary"
                 type="submit"
                 value="Continue with Google"
               />
-            </div>
+          </div>
+          <div>
+            {
+              logInError && <p className="text-error">{logInError}</p>
+            }
+           </div>
           </form>
           <p className="text-center">
             New to account?
