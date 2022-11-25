@@ -3,7 +3,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 
@@ -14,7 +14,12 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { logIn, googleSignIn } = useContext(AuthContext);
 
-  const [logInError, setLogInError] = useState('')
+  const [logInError, setLogInError] = useState('');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
 
 
   const handleLogin = (data) => {
@@ -24,6 +29,7 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       }).catch(error => {
         console.log(error.message);
         setLogInError(error.message)
