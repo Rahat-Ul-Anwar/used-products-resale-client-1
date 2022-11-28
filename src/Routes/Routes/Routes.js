@@ -6,6 +6,7 @@ import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Products from "../../pages/Products/Products";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,13 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/watchCategories/:id',
+                loader: ({params}) => {
+                 return   fetch(`http://localhost:5000/watchCategories/${params.id}`)
+                },
+                element: <Products></Products>
             },
         ],
         

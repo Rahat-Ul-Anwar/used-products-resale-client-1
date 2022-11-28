@@ -1,0 +1,19 @@
+[
+    {
+      "id": "01",
+      "name": "Analog Watches",
+       "img": "https://i.ibb.co/rkLgTZZ/analog.jpg"
+    },
+    {
+      "id": "02",
+      "name": "Smart Watches",
+      "img": "https://i.ibb.co/Pcj0B4W/smart.jpg"
+    },
+    {
+      "id": "03",
+      "name": "Swiss Watches",
+      "img": "https://i.ibb.co/M8b0ryP/switch-watch.jpg"
+    }
+   
+    
+  ]
