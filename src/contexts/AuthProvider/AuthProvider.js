@@ -28,14 +28,14 @@ const AuthProvider = ({ children }) => {
     const updateUser = (userInfo) => {
       
         
-        return updateProfile(user, userInfo)
+        return updateProfile(auth.currentUser, userInfo);
     }
     // user login
 
     const logIn = (email, password) => {
         setLoading(true);
         
-       return signInWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
 
