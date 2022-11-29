@@ -7,6 +7,7 @@ import Register from "../../pages/Register/Register";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Products from "../../pages/Products/Products";
+import NoFound from "../../pages/NoFound/NoFound";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,11 @@ export const router = createBrowserRouter([
                 },
                 element: <Products></Products>
             },
+
+            {
+                path: '*',
+                element: <NoFound></NoFound>
+            }
         ],
         
 

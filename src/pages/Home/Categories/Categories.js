@@ -15,7 +15,8 @@ const Categories = () => {
     return (
         <div>
             <h2 className='text-4xl font-semibold text-center my-12'>Our Services</h2>
-            <h3>watch Category : {categories.length}</h3>
+       
+         
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
 
