@@ -1,9 +1,13 @@
 import React from "react";
+// import BookingModal from './BookingModal.js';
+ 
+ 
+ 
 
-const Product = ({ product }) => {
+const Product = ({ product , setBookingOptions}) => {
     const { img_url, title, years_of_use, seller_name,location,original_price, resale_price } = product;
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl mt-20">
       <div className="p-2 rounded-xl">
         <figure>
           <img src={img_url} className="h-48 w-80" alt="Product" />
@@ -22,7 +26,13 @@ const Product = ({ product }) => {
           <h3 className="font-semibold">Resale Price: ${resale_price}</h3>
 
           <div>
-            <button className="btn btn-xs btn-primary">Book Now</button>
+         
+            <label onClick={()=> setBookingOptions(product)}
+              htmlFor="booking-modal"
+              className="btn btn-xs btn-primary">Book Now</label>
+ 
+      {/* <BookingModal product={product}></BookingModal> */}
+           
           </div>
         </div>
       </div>
