@@ -33,10 +33,10 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, index) => (
+            {bookings?.map((booking, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td>{booking.userName}</td>
+                <td>{booking?.userName}</td>
                 <td className="hover">{booking.itemName}</td>
                 <td>{booking.resale_price}</td>
                 <td>{booking.location}</td>
