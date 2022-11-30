@@ -8,6 +8,8 @@ import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Products from "../../pages/Products/Products";
 import NoFound from "../../pages/NoFound/NoFound";
+import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
+import DashboardLayout from "../../layout/DashboardLayout";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,7 @@ export const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
+            
             {
                 path: '/watchCategories/:id',
                 loader: ({params}) => {
@@ -48,7 +51,18 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/myorders',
+                element: <MyOrders></MyOrders>
+            },
+           
+        ]
     }
 
 

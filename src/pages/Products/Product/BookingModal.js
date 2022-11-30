@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
-const BookingModal = ({ bookingOptions,setBookingOptions }) => {
+const BookingModal = ({ bookingOptions, setBookingOptions }) => {
   const { title, original_price, resale_price } = bookingOptions;
 
-
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -23,26 +22,25 @@ const BookingModal = ({ bookingOptions,setBookingOptions }) => {
       phone,
       location,
       original_price,
-      resale_price
+      resale_price,
     };
 
-    fetch('http://localhost:5000/bookings', {
-      method: 'POST',
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(booking)
-    }).then(res => res.json())
-      .then(data => {
-        if (data.acknowledged) {
-          console.log(booking);
-    setBookingOptions(null);
-    toast.success('Booking Confirmed');
-
-       }
+      body: JSON.stringify(booking),
     })
-   
-  
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(booking);
+
+        if (data.acknowledged) {
+          setBookingOptions(null);
+          toast.success("Booking Confirmed");
+        }
+      });
   };
 
   return (
@@ -64,13 +62,11 @@ const BookingModal = ({ bookingOptions,setBookingOptions }) => {
               placeholder="user name"
               className="input input-bordered w-full mb-2"
               defaultValue={user?.displayName}
-             disabled
-              
+              disabled
             />
             <input
               type="email"
               name="email"
-             
               className="input input-bordered w-full mb-2"
               defaultValue={user?.email}
               disabled
@@ -81,7 +77,7 @@ const BookingModal = ({ bookingOptions,setBookingOptions }) => {
               placeholder="phone"
               className="input input-bordered w-full mb-2"
             />
-         
+
             <label className="label">
               <span className="label-text">Original Price</span>
             </label>
@@ -93,7 +89,7 @@ const BookingModal = ({ bookingOptions,setBookingOptions }) => {
               value={original_price}
               readOnly
             />
-              <label className="label">
+            <label className="label">
               <span className="label-text">Resale Price</span>
             </label>
             <input
@@ -103,7 +99,7 @@ const BookingModal = ({ bookingOptions,setBookingOptions }) => {
               value={resale_price}
               readOnly
             />
-               <select
+            <select
               name="location"
               className="select input-bordered  w-full mb-2"
             >
