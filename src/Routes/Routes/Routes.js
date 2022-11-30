@@ -10,6 +10,8 @@ import Products from "../../pages/Products/Products";
 import NoFound from "../../pages/NoFound/NoFound";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import DashboardLayout from "../../layout/DashboardLayout";
+import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/users',
+                element:  <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
            
         ]
