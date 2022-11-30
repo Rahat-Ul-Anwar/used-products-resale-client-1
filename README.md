@@ -14,5 +14,12 @@
 
 * deploy in firebase and vercel.
 
+### admin info:
+
+* admin user name: ashik
+* admin email: ashik@gmail.com
+
+* pass: Rahat324339@@
+
 
 
